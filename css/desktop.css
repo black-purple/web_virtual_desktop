@@ -1,0 +1,16 @@
+.desktop_icon{
+    margin: 1.2em 2.7em;
+    float: right;
+}
+.desktop_icon table td{
+    text-align: center;
+    max-width: 35px;
+}
+.desktop_icon_image{
+    height: 4.2em;
+}
+.desktop_icon_name{
+    margin-top: .5em;
+    font-size: 1.3em;
+    text-shadow: 1px 1px 1px grey;
+}

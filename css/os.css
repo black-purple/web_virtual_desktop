@@ -1,0 +1,151 @@
+@import url(./window.css);
+@import url(./desktop.css);
+*{
+    margin : 0;
+    padding : 0;
+    user-select: none;
+    --windows_global_font :  Microsoft Sans Serif;
+
+    --windows_button_color : #41cb41;
+    --windows_button_color_hover : #4fee4f;
+
+    --taskbar_size : 6%;
+    --taskbar_color : #2361e1;
+    --time_widget_color : #3d97fd;
+    --taskbar_application_color_in_blur : #3b84d8;
+    --taskbar_application_color_in_foucs : #7380f5;
+    --taskbar_shadow : inset 8px 0px 4px 4px #00000033;
+    --taskbar_application_height : 80%;
+    --global_inset_shadow : inset 0px 0px 4px 2px #00000080;
+    
+}
+
+body{
+    background-image: url("../graphics/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/* buttom task bar who contain 'windows_button' current running applications & stuff */
+#taskbar{
+    background-color : var(--taskbar_color);
+    position: fixed;
+    width: 100%;
+    height: var(--taskbar_size);
+    top: calc(100% - var(--taskbar_size));
+    box-shadow: var(--taskbar_shadow);
+}
+
+/* full windows menu button  */
+#start_button{
+    position: relative;
+    height: 100%;
+    width: 18vh;
+    background-color : var(--windows_button_color);
+    border-radius: 0vh 1vh 2.8vh 0vh;
+    float: left;
+    box-shadow: var(--global_inset_shadow);
+    transition: 0.1s;
+}
+/* time widget styling */
+#time_widget{
+    position: relative;
+    height: 100%;
+    width: 15vh;
+    background-color : var(--time_widget_color) ;
+    border-radius: 1vh 0vh 0vh 1vh;
+    float: right;
+    box-shadow: var(--global_inset_shadow);
+}
+#time, #date{
+    position: relative;
+    top: 15%;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+}
+/* on hover event */
+#start_button:hover{
+    background-color: var(--windows_button_color_hover);
+    transition: 0.1s;
+    cursor:  pointer;
+}
+/* on click event */
+#start_button:active{
+    transform: scale(0.98);
+}
+
+/* logo windows menu button */
+#start_button img{
+    position: relative;
+    height: 80%;
+    top : 10%;
+    left: 5%;
+    float: left;
+}
+/* text windows menu button */
+#start_button p{
+    position: relative;
+    height: 80%;
+    top : 10%;
+    left: 12%;
+    float: left;
+    color : white;
+    font-family: var(--windows_global_font);
+    font-weight: bold;
+    font-size: 4vh;
+}
+/* application in taskbar */
+#taskbar .application_in_taskbar{
+    position : relative;
+    height: var(--taskbar_application_height);
+    float: left;
+    background : var(--taskbar_application_color_in_blur);
+    border-radius: 0.5vh;
+    top: 10%;
+    margin-left: 4px;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+/* in click event */
+#taskbar .application_in_taskbar:active{
+    transform:scale(0.96);
+}
+
+/* in hover event */
+#taskbar .application_in_taskbar:hover{
+    background-color : var(--taskbar_application_color_in_foucs);
+}
+
+#taskbar .application_in_taskbar .app_icon{
+    position: relative;
+    float:left;
+    height: 70%;
+    margin-left: 0.5vh;
+    top: 15%;
+}
+#wind{
+    position: relative;
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+}
+#taskbar .application_in_taskbar .app_name{
+    position: relative;
+    color: white;
+    font-family: var(--windows_global_font);
+    font-weight: bold;
+    float:left;
+    font-size: 2vh;
+    top: calc(50% - 1vh);
+    padding-right: 1vh;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

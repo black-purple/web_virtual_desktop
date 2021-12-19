@@ -1,0 +1,73 @@
+*{
+    --window_in_foucs_color : #0055e5;
+    --window_out_focus_color : rgb(122, 153, 227);
+    --window_radius : 0.8vh  0.8vh  0vh 0vh;
+    --window_default_font_size : 2.5vh;
+    --window_title_bar_height : 5vh;
+    --window_title_bar_margin_between_elements : 1vh;
+    --window_resize : 1vh;
+}
+.windowWrapper{
+    position: absolute;
+    background-color: #0055e5;
+    border-radius: 0.8vh  0.8vh  0vh 0vh;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+.windowWrapper .win_title_bar{
+    cursor: move;
+    user-select: none;
+    width: 100%;
+    height: var(--window_title_bar_height);
+    overflow: hidden;
+}
+/* window icons in title bar */
+.windowWrapper .win_title_bar .icon{
+    position: relative;
+    width: calc(var(--window_title_bar_height) / 1.5);
+    top: 25%;
+}
+.windowWrapper .win_title_bar .title_icon{
+    float: left;
+    margin-left : var(--window_title_bar_margin_between_elements);
+}
+.windowWrapper .win_title_bar .window_title_button:active{
+    transition: 0.2s;
+    transform: scale(0.90);
+}
+/* window title */
+.windowWrapper .win_title_bar .title{
+    position: relative;
+    font-family: var(--windows_global_font);
+    color : white;
+    font-weight: bold;
+    font-size : var(--window_default_font_size);
+    /* border:1px solid rgb(0, 0, 0); */
+    top: 25%;
+    float: left;
+    margin-left : var(--window_title_bar_margin_between_elements);
+    cursor: default;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.windowWrapper .full_container{
+    position: relative;
+    width: calc(100% - var(--window_resize) * 2);
+    height: calc(100% -  ( var(--window_resize) * 2 + var(--window_title_bar_height) ));
+    left: var(--window_resize) ;
+    top : var(--window_resize) ;
+    overflow: auto;
+    background : white;
+}
+.full_container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #dddddd;
+}
