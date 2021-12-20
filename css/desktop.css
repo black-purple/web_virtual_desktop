@@ -9,7 +9,8 @@
     height: 4.2em;
 }
 .desktop_icon_name{
+    color: white;
     margin-top: .5em;
     font-size: 1.3em;
-    text-shadow: 1px 1px 1px grey;
+    text-shadow: 2px 2px 5px rgba(3, 3, 3, 0.842);
 }
