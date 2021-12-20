@@ -13,8 +13,10 @@
    <script type="text/javascript" src="./utils/open_window.js"></script>
    <script type="text/javascript" src="./utils/drag_window.js"></script>
    <script type="text/javascript" src="./utils/time.js"></script>
+   <script type="text/javascript" src="./utils/expand_area.js"></script>
    <title>Windows XP - WEB</title>
    <link rel="shortcut icon" href="./graphics/favicon.ico" type="image/x-icon">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
     <div id="taskbar">
@@ -24,14 +26,15 @@
           <p>start</p>
       </div>
       <!-- time widget -->
-      <div id="time_widget">
-        <div id="time">time</div>
-        <div id="date">date</div>
-      </div>
+        <div id="time_widget">
+          <div id="time">time</div>
+          <div id="date">date</div>
+        </div>
+        <span id="expdgBtn"> <i class="bi bi-caret-left-fill" id="left_arrow" onclick="expandArea()"></i> <i class="bi bi-caret-right-fill" id="right_arrow" onclick="reduceArea()"></i> </span>
     </div>
 
     <!-- open window using desktop icon -->
-    <div class="desktop_icon" onclick="spawnWindow()">
+    <div class="desktop_icon" onclick="spawnWindow(), spawnTaskbarIcon()">
       <table>
         <tr><td><img src="./graphics/folder_close.png" alt="folder" draggable="false" class="desktop_icon_image" ></td></tr>
         <tr><td><p class="desktop_icon_name">Folder</p></td></tr>

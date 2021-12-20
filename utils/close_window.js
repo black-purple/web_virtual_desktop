@@ -11,8 +11,6 @@ function killWindowIcon(id){
 }
 // kill notification message
 function killNotif(){
-    var notifMsg = document.getElementById('notification_container');
+    var notifMsg = document.getElementById('notif_container');
     notifMsg.parentNode.removeChild(notifMsg);
-
 }
-            

@@ -1,10 +1,9 @@
 .desktop_icon{
-    margin: 1.2em 2.7em;
+    margin: 1.2em 1.2em;
     float: right;
 }
 .desktop_icon table td{
     text-align: center;
-    max-width: 35px;
 }
 .desktop_icon_image{
     height: 4.2em;

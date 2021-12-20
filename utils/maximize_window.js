@@ -19,7 +19,7 @@ function unMaxWindow(id){
 // Toggle between maximized mode and normal mode
 function maxWindowToggle(id){
     var elem = document.getElementById(id);
-    if (elem.style.width == '100%'){
+    if (elem.style.width === '100%'){
         unMaxWindow(id);
     }else{
         maxWindow(id);
