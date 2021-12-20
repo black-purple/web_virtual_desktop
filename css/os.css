@@ -46,6 +46,7 @@ body{
     transition: 0.1s;
 }
 #expdgBtn{
+    color: white;
     background-color: #3794ff;
     border-radius: 50%;
     box-shadow: var(--global_inset_shadow);
