@@ -4,15 +4,17 @@ This is a project that we made to learn more about the front-end web languages (
 
 Below are some preview images:
 
-![Preview Image 1](./ss1.png)
-![Preview Image 2](./ss2.png)
-![Preview Image 3](./ss3.png)
+![Preview Image 1](./previews/ss1.png)
+
+![Preview Image 2](./previews/ss2.png)
+
+![Preview Image 3](./previews/ss3.png)
 
 ## Idea
 
-[Mourade Ouchane - a.k.a  ouchane_cc on GitHub-](https://github.com/Mouradouchane)
+[Mourade Ouchane - a.k.a  ouchane_cc on GitHub -](https://github.com/Mouradouchane)
 
 ## Contributors
 
-* [Mourade Ouchane - a.k.a  ```ouchane_cc on GitHub ``` -](https://github.com/Mouradouchane)
+* [Mourade Ouchane - a.k.a  ouchane_cc on GitHub -](https://github.com/Mouradouchane)
 * [Abderrahman DAKIR ALLAH - a.k.a  black-purple on GitHub -](https://github.com/black-purple)
