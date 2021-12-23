@@ -9,6 +9,7 @@ export class window {
         title = "window", focus = true , maximise = true , minimise = true
     ){
         this.id = id;
+        this.icon_id = "window_icon_" + this.id;
         this.x = x;
         this.y = y;
 
@@ -40,29 +41,16 @@ export class window {
             
         } 
 
-        this.spawnTaskbarIcon = function(winId = randomWinId, iconId = randomIconId){
-            let taskbar = document.getElementById('taskbar');
-            taskbar.appendChild(barIcon);
-            barIcon.setAttribute('class', 'app_in_taskbar');
-            barIcon.setAttribute('id', "" + iconId + "");
-            barIcon.setAttribute('onclick', 'minWindowToggle(' + winId + ')');
+        // generate function is the responsible for making a new window with all it's component/elements
+        // generate function return true if it's successed generating window otherwise return will be false
+        this.generate = function(){
             
-            barIcon.appendChild(barIconImage);
-            barIconImage.setAttribute('class', 'app_icon');
-            barIconImage.setAttribute('src', './graphics/folder_open.png');
-            barIconImage.setAttribute('draggable', 'false');
-            barIconImage.setAttribute('alt', 'app_icon');
-            
-            barIcon.appendChild(barIconText);
-            barIconText.setAttribute('class', 'app_name');
-            barIconText.innerHTML = winTitle.innerHTML;
-        }
-        
+            // in case any element is already with that window id 
+            let isAlreadyExist = document.querySelector(`#${this.id}`);
 
-        this.show = function(){
-
+        if(isAlreadyExist == null || isAlreadyExist == undefined){
             // Creating window components
-            let wholeWin = document.createElement("div");
+            let window = document.createElement("div");
             let winTitle = document.createElement("span");
             let winTitleBar = document.createElement("div");
             let winTitleIcon = document.createElement("img");
@@ -72,80 +60,162 @@ export class window {
             let winMaxIcon = document.createElement("img");
             let winBody = document.createElement("div");
 
-            // Creating taskbar icon button
-            let barIcon = document.createElement('div');
-            let barIconText = document.createElement('p');
-            let barIconImage = document.createElement('img');
+            // setup "window" ==============================
+            // set CSS
+            window.style.cssText = `
+                position : 'absolute';
+                height : ${this.height}px;
+                width  : ${this.width }px;
+                top  : ${this.x}px;
+                left : ${this.y}px;
+                transition : '1s ease-in';
+            `
+            // set Attributes
+            window.setAttribute('class', 'windowWrapper');
+            window.setAttribute('id', this.id);
+            // ==============================================
 
 
-            // Whole window
-            document.body.appendChild(wholeWin);
-            wholeWin.style.height = '400px';
-            wholeWin.style.width = '400px';
-            wholeWin.style.position = 'absolute';
-            wholeWin.style.top = '30%';
-            wholeWin.style.left = '15%';
-            wholeWin.style.transition = '1s ease-in';
-            wholeWin.setAttribute('class', 'windowWrapper');
-            wholeWin.setAttribute('id', this.id);
-            wholeWin.appendChild(winTitleBar);
-
-            // Window title bar
+            // setup "Window title bar" =====================
+            // set Attributes
             winTitleBar.setAttribute('class', 'win_title_bar');
             winTitleBar.setAttribute('id', 'window_title_bar');
-            
-            // Window title icon (the top left icon)
+
+            // icon (the top left icon)
             winTitleBar.appendChild(winTitleIcon);
             winTitleIcon.setAttribute('class', 'icon title_icon');
-            winTitleIcon.setAttribute('src', './graphics/folder_open.png');
+            winTitleIcon.src = './graphics/folder_open.png';
             winTitleIcon.setAttribute('alt', 'icon');
             winTitleIcon.setAttribute('draggable', 'false');
 
-            // Window title
+            // title
             winTitleBar.appendChild(winTitle);
             winTitle.setAttribute('class', 'title');
-            winTitle.innerHTML = 'Window Title';
+            // set window title
+            winTitle.textContent = this.title;
+            // ==============================================
 
-            // Window minimize button
-            winTitleBar.appendChild(winMinIcon);
-            winMinIcon.setAttribute('class', 'icon win_title_button');
-            winMinIcon.setAttribute('src', './graphics/window_min.png');
-            winMinIcon.setAttribute('alt', 'minimize');
-            winMinIcon.setAttribute('draggable', 'false');
-            winMinIcon.setAttribute('onclick', 'minWindow(' + this.id + ')');
-
-            // Window maximize button
-            winTitleBar.appendChild(winMaxIcon);
-            winMaxIcon.setAttribute('class', 'icon win_title_button');
-            winMaxIcon.setAttribute('src', './graphics/window_max.png');
-            winMaxIcon.setAttribute('alt', 'maximize');
-            winMaxIcon.setAttribute('draggable', 'false');
-            winMaxIcon.setAttribute('onclick', 'maxWindowToggle(' + this.id + ')');
             
-            // Window close button
-            winTitleBar.appendChild(winCloseIcon);
-            winCloseIcon.setAttribute('class', 'icon win_title_button');
-            winCloseIcon.setAttribute('src', './graphics/window_close.png');
-            winCloseIcon.setAttribute('alt', 'close');
-            winCloseIcon.setAttribute('draggable', 'false');
-            winCloseIcon.setAttribute('onclick', 'killWindow(' + this.id + '), killWindowIcon('+ "window_icon_"+this.id +')');
+            // setup "Window minimize button" ===============
+            // if window has minimize ability
+            if(this.minimise){
+
+                winMinIcon.setAttribute('class', 'icon win_title_button');
+                winMinIcon.src = './graphics/window_min.png';
+                winMinIcon.setAttribute('alt', 'minimize');
+                winMinIcon.setAttribute('draggable', 'false');
+
+                // add click event when user click on it
+                winMinIcon.addEventListener('click', function(){
+                    /* 
+                        minimize function logic need to be here
+                    */
+                    console.warn("minimise button working !");
+                });
+
+                // push this element to title bar
+                winTitleBar.appendChild(winMinIcon);
+            }
+            // ==============================================
+
+
+            // setup "Window maximize button" ===============
+            // if window has maximize ability
+            if(this.maximise){
+
+                    winMaxIcon.setAttribute('class', 'icon win_title_button');
+                    winMaxIcon.src = './graphics/window_max.png';
+                    winMaxIcon.setAttribute('alt', 'maximize');
+                    winMaxIcon.setAttribute('draggable', 'false');
+
+                    // add click event when user click on it
+                    winMaxIcon.addEventListener('click', function(){
+                        /* 
+                            maximize function logic need to be here
+                        */
+                        console.warn("maximize button working ! ");
+                    });
+
+                    // push this element to title bar
+                    winTitleBar.appendChild(winMaxIcon);
+                }
+                // ==============================================
+
+
+                // setup "Window close button" ===============
+                // setup close button
+                    winCloseIcon.setAttribute('class', 'icon win_title_button');
+                    winCloseIcon.src = './graphics/window_close.png';
+                    winCloseIcon.setAttribute('alt', 'close');
+                    winCloseIcon.setAttribute('draggable', 'false');
+
+                    // add click event when user click on it
+                    winCloseIcon.addEventListener('click', function(){
+                        /* 
+                            close function logic need to be here
+                        */
+                        console.warn("close button working ! ");
+                    });
+
+                    // push this element to title bar
+                    winTitleBar.appendChild(winCloseIcon);
+                // ==============================================
+
+                // window composing
+
+                // Isolating the window icons
+                winIcons.appendChild(winMinIcon);
+                winIcons.appendChild(winMaxIcon);
+                winIcons.appendChild(winCloseIcon);
+
+                // push win title bar to window
+                window.appendChild(winTitleBar);
+                // push window to the body
+                document.body.appendChild(window);
+
+
+                winIcons.setAttribute('class', 'win_action_icons');
+                winTitleBar.appendChild(winIcons);
+
+                // Window body
+                window.appendChild(winBody);
+                winBody.setAttribute('class', 'full_container');
+                spawnTaskbarIcon(this.id, this.icon_id);
+
+                /*
+                    as last step we storing essential window elements in "dom" object 
+                    for future usage
+                */ 
+                this.dom ={
+                    window : window,
+                    titleBar : winTitleBar,
+                    icon : winIcons,
+                    body : winBody
+                };
+
+                // confirmation => success operation
+                return true;
+            }
+            // in case window or any element exist with the same id 
+            else{
+                // exception message and , none generated window
+                console.exception(`generating window was unsuccessful because reserved element exist with the same id ${this.id} `);
             
-            // Isolating the window icons
-            winIcons.appendChild(winMinIcon);
-            winIcons.appendChild(winMaxIcon);
-            winIcons.appendChild(winCloseIcon);
-            winIcons.setAttribute('class', 'win_action_icons');
-            winTitleBar.appendChild(winIcons);
-
-            // Window body
-            wholeWin.appendChild(winBody);
-            winBody.setAttribute('class', 'full_container');
-            spawnTaskbarIcon(this.id, "window_icon_"+this.id);
-
-
-            this.spawnTaskbarIcon();
+                // confirmation => unsuccess operation
+                return false;
+            }
         }
 
+        // function make window visible if possible
+        this.show = function(){
+            /*
+                this function 
+                    not stable 
+                    not completed
+                    
+            */
+            this.generate();
+        }
         
         }
 
