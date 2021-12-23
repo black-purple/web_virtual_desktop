@@ -1,32 +1,32 @@
 // Generate random ID
 function generateId(length){
-    var result = '';
-    var characters = '0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    let result = '';
+    let characters = '0123456789';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
    return result;
 }
 
 // Creating window components
-const wholeWin = document.createElement("div");
-const winTitle = document.createElement("span");
-const winTitleBar = document.createElement("div");
-const winTitleIcon = document.createElement("img");
-const winIcons = document.createElement("span");
-const winCloseIcon = document.createElement("img");
-const winMinIcon = document.createElement("img");
-const winMaxIcon = document.createElement("img");
-const winBody = document.createElement("div");
+let wholeWin = document.createElement("div");
+let winTitle = document.createElement("span");
+let winTitleBar = document.createElement("div");
+let winTitleIcon = document.createElement("img");
+let winIcons = document.createElement("span");
+let winCloseIcon = document.createElement("img");
+let winMinIcon = document.createElement("img");
+let winMaxIcon = document.createElement("img");
+let winBody = document.createElement("div");
 // Creating taskbar icon button
-const barIcon = document.createElement('div');
-const barIconText = document.createElement('p');
-const barIconImage = document.createElement('img');
+let barIcon = document.createElement('div');
+let barIconText = document.createElement('p');
+let barIconImage = document.createElement('img');
 
 // Generating a new id each time
-var randomWinId = generateId(2);
-var randomIconId = generateId(2);
+let randomWinId = generateId(2);
+let randomIconId = generateId(2);
 
 // Adding a new element when clicking an icon 
 // (hence spawning a new window)
@@ -98,7 +98,7 @@ function spawnWindow(winId = randomWinId, iconId = randomIconId){
 
 // Create Taskbar icon foreach open window
 function spawnTaskbarIcon(winId = randomWinId, iconId = randomIconId){
-    const taskbar = document.getElementById('taskbar');
+    let taskbar = document.getElementById('taskbar');
     taskbar.appendChild(barIcon);
     barIcon.setAttribute('class', 'app_in_taskbar');
     barIcon.setAttribute('id', "" + iconId + "");

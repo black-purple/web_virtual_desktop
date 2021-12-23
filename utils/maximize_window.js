@@ -1,6 +1,6 @@
 // Maximize window size
 function maxWindow(id){
-    var elem = document.getElementById(id);
+    let elem = document.getElementById(id);
     elem.style.height = '94%';
     elem.style.width = '100%';
     elem.style.top = '0';
@@ -9,7 +9,7 @@ function maxWindow(id){
 }
 // unmaximize the window
 function unMaxWindow(id){
-    var elem = document.getElementById(id);
+    let elem = document.getElementById(id);
     elem.style.height = '400px';
     elem.style.width = '400px';
     elem.style.top = '30%';
@@ -18,7 +18,7 @@ function unMaxWindow(id){
 }
 // Toggle between maximized mode and normal mode
 function maxWindowToggle(id){
-    var elem = document.getElementById(id);
+    let elem = document.getElementById(id);
     if (elem.style.width === '100%'){
         unMaxWindow(id);
     }else{
