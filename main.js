@@ -4,10 +4,10 @@
 import {window} from "./window.js"
 
 
-let window1 = new window("win1",20,20,400,400);
+let window1 = new window("win1",20,20,400,400 , "title_test");
 
 window1.show();
 
-let window2 = new window("win2",0,0,320,400);
+let window2 = new window("win1",80,100,320,400,"twind",true,false,false);
 
 window2.show();
