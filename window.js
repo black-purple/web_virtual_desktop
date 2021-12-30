@@ -6,7 +6,8 @@ export class window {
     // new window arguments 
     constructor (
         id = "defWindow" , x = 10, y = 10 , height = 512, width = 512 , 
-        title = "window", focus = true , maximise = true , minimise = true
+        title = "window", focus = true , maximise_button = true , minimise_button = true , 
+        maximise = false , minimise = true, hidden = false
     ){
         this.id = id;
         this.icon_id = "window_icon_" + this.id;
@@ -20,6 +21,11 @@ export class window {
         // in case you want window with "maximise & minimise" buttons
         this.maximise = maximise;
         this.minimise = minimise;
+        this.hidden   = hidden;
+
+        // the actual "maximise minimise" window controller
+        this.maximise_button = maximise_button;
+        this.minimise_button = minimise_button;
 
         // resize object => in case you want that window to be resizable in "top down"/"right left" or all
         this.resizable = {
@@ -43,7 +49,7 @@ export class window {
 
         // generate function is the responsible for making a new window with all it's component/elements
         // generate function return true if it's successed generating window otherwise return will be false
-        this.generate = function(){
+        this.generate = () => {
             
             // in case any element is already with that window id 
             let isAlreadyExist = document.querySelector(`#${this.id}`);
@@ -98,7 +104,7 @@ export class window {
             
             // setup "Window minimize button" ===============
             // if window has minimize ability
-            if(this.minimise){
+            if(this.minimise_button){
 
                 winMinIcon.setAttribute('class', 'icon win_title_button');
                 winMinIcon.src = './graphics/window_min.png';
@@ -121,7 +127,7 @@ export class window {
 
             // setup "Window maximize button" ===============
             // if window has maximize ability
-            if(this.maximise){
+            if(this.maximise_button){
 
                     winMaxIcon.setAttribute('class', 'icon win_title_button');
                     winMaxIcon.src = './graphics/window_max.png';
@@ -129,13 +135,30 @@ export class window {
                     winMaxIcon.setAttribute('draggable', 'false');
 
                     // add click event when user click on it
-                    winMaxIcon.addEventListener('click', function(){
-                        /* 
-                            maximize function logic need to be here
-                        */
-                        console.warn("maximize button working ! ");
-                    });
+                    winMaxIcon.addEventListener('click', () => {
+                        
+                        // toggling between maximize & minimize;
+                        if( !this.maximise ){
 
+                            this.maximizeWindow();
+                            this.maximise = true; 
+                            this.minimise = false; 
+
+                        }
+                        else{
+
+                            this.minimiseWindow();
+                            this.minimise = true; 
+                            this.maximise = false; 
+
+                        }
+
+                        console.log("max " , this.maximise);
+                        console.log("min " , this.minimise);
+                        console.log("=======================");
+
+                    });
+                    
                     // push this element to title bar
                     winTitleBar.appendChild(winMaxIcon);
                 }
@@ -173,7 +196,6 @@ export class window {
                 // push window to the body
                 document.body.appendChild(window);
 
-
                 winIcons.setAttribute('class', 'win_action_icons');
                 winTitleBar.appendChild(winIcons);
 
@@ -186,12 +208,7 @@ export class window {
                     as last step we storing essential window elements in "dom" object 
                     for future usage
                 */ 
-                this.dom ={
-                    window : window,
-                    titleBar : winTitleBar,
-                    icon : winIcons,
-                    body : winBody
-                };
+                this.dom = document.querySelector(`#${this.id}`);
 
                 // confirmation => success operation
                 return true;
@@ -200,23 +217,92 @@ export class window {
             else{
                 // exception message and , none generated window
                 console.exception(`generating window was unsuccessful because reserved element exist with the same id ${this.id} `);
-            
                 // confirmation => unsuccess operation
                 return false;
             }
         }
 
         // function make window visible if possible
-        this.show = function(){
-            /*
-                this function 
-                    not stable 
-                    not completed
+        this.show = () => {
+           
+            // generte window using function generat
+            // and getting result of that operation
+            let output = this.generate();
+
+            // in case response from "output" true
+            if(output){
+
+                // window maximize or minimze depend on 
+                if( this.maximise ){
+
+                    this.maximizeWindow();
+                    this.maximise = true; 
+                    this.minimise = false; 
+
+                }
+                else{
+
+                    this.minimiseWindow();
+                    this.minimise = true; 
+                    this.maximise = false; 
                     
-            */
-            this.generate();
+                }
+
+                console.log("max " , this.maximise);
+                console.log("min " , this.minimise);
+
+            }
+            // in case error happend in during generate
+            else {
+                console.exception("cannot make window visible , possible error happened during generate window");
+            }
         }
         
+        // this function maximize window
+        this.maximizeWindow = () => {  
+
+            // if dom of this window is available
+            if(this.dom != null && this.dom != undefined) {
+
+                this.dom.style.cssText = `
+                        height : calc(100% - 6vh);
+                        width : 100%;
+                        top : 0px;
+                        left : 0px;
+                        transition : .3s ease;
+                        border-radius : 0px;
+                `;
+  
+            } 
+            // else mean something happed or window not available currently
+            else{ 
+                console.warn(`cannot maximize window currently !`);
+            }
+
         }
 
-}
+        // this function minimize window
+        this.minimiseWindow = () => {
+
+            // if dom of this window is available
+            if(this.dom != null && this.dom != undefined){
+
+                this.dom.style.cssText = `
+                height : ${this.height}px;
+                width : ${this.width}px;
+                top : ${this.y}px;
+                left : ${this.x}px;
+                border-raduis : 0.8vh 0.8vh 0vh 0vh;
+                transition : .3s ease;
+                `;
+
+            }
+            // else mean something happed or window not available ==> error message explian currently
+            else{ 
+                console.warn(`cannot minimize window currently !`);
+            }
+        }
+
+        } // end of constructor
+
+} // end of class

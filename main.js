@@ -8,6 +8,11 @@ let window1 = new window("win1",20,20,400,400 , "title_test");
 
 window1.show();
 
-let window2 = new window("win1",80,100,320,400,"twind",true,false,false);
+let window2 = new window("win3",80,100,320,400,"twind",true,true,true);
 
 window2.show();
+/*
+setTimeout(() =>  {
+    window1.maximizeWindow();
+}, 1500);
+*/
