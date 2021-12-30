@@ -43,7 +43,7 @@ export class window {
 
         // generate function is the responsible for making a new window with all it's component/elements
         // generate function return true if it's successed generating window otherwise return will be false
-        this.generate = function(){
+        this.generate = () => {
             
             // in case any element is already with that window id 
             let isAlreadyExist = document.querySelector(`#${this.id}`);
@@ -129,13 +129,14 @@ export class window {
                     winMaxIcon.setAttribute('draggable', 'false');
 
                     // add click event when user click on it
-                    winMaxIcon.addEventListener('click', function(){
-                        /* 
-                            maximize function logic need to be here
-                        */
-                        console.warn("maximize button working ! ");
-                    });
+                    winMaxIcon.addEventListener('click', () => {
+                        
+                        // toggling between maximize & minimize;
+                        ( this.maximise ) ? this.minimiseWindow() : this.maximizeWindow();
+                        console.log(this.maximise);
 
+                    });
+                    
                     // push this element to title bar
                     winTitleBar.appendChild(winMaxIcon);
                 }
@@ -186,12 +187,7 @@ export class window {
                     as last step we storing essential window elements in "dom" object 
                     for future usage
                 */ 
-                this.dom ={
-                    window : window,
-                    titleBar : winTitleBar,
-                    icon : winIcons,
-                    body : winBody
-                };
+                this.dom = document.querySelector(`#${this.id}`);
 
                 // confirmation => success operation
                 return true;
@@ -200,23 +196,77 @@ export class window {
             else{
                 // exception message and , none generated window
                 console.exception(`generating window was unsuccessful because reserved element exist with the same id ${this.id} `);
-            
                 // confirmation => unsuccess operation
                 return false;
             }
         }
 
         // function make window visible if possible
-        this.show = function(){
+        this.show = () => {
             /*
                 this function 
                     not stable 
                     not completed
                     
             */
-            this.generate();
+            let generate_output = this.generate();
+
+            if(generate_output){
+                (this.maximise) ? this.maximizeWindow() : this.minimiseWindow();
+            }
         }
         
+        // this function maximize window
+        this.maximizeWindow = () => {  
+
+            // if dom of this window is available
+            if(this.dom != null && this.dom != undefined){
+
+                this.dom.style.cssText = `
+                        height : calc(100% - 6vh);
+                        width : 100%;
+                        top : 0px;
+                        left : 0px;
+                        transition : .3s ease;
+                        border-radius : 0px;
+                        cursor : default;
+                `;
+
+                // switch window maximize to "active"
+                this.maximise = true;
+            } 
+            // else mean something happed or window not available ==> error message explian 
+            else{ 
+                console.exception(`cannot maximize window does not exist`);
+            }
+
         }
 
-}
+        // this function minimize window
+        this.minimiseWindow = () => {
+
+            // if dom of this window is available
+            if(this.dom != null && this.dom != undefined){
+
+                this.dom.style.cssText = `
+                height : ${this.height};
+                width : ${this.width}px;
+                top : ${this.y}px;
+                left : ${this.x}px;
+                border-raduis : 0.8vh 0.8vh 0vh 0vh;
+                transition : .3s ease;
+                `;
+
+                
+                // switch window minimize to "active"
+                this.minimise = true;
+            }
+            // else mean something happed or window not available ==> error message explian 
+            else{ 
+                console.exception(`cannot minimize window does not exist`);
+            }
+        }
+
+        } // end of constructor
+
+} // end of class
