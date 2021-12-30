@@ -6,7 +6,8 @@ export class window {
     // new window arguments 
     constructor (
         id = "defWindow" , x = 10, y = 10 , height = 512, width = 512 , 
-        title = "window", focus = true , maximise = true , minimise = true
+        title = "window", focus = true , maximise_button = true , minimise_button = true , 
+        maximise = false , minimise = true, hidden = false
     ){
         this.id = id;
         this.icon_id = "window_icon_" + this.id;
@@ -20,6 +21,11 @@ export class window {
         // in case you want window with "maximise & minimise" buttons
         this.maximise = maximise;
         this.minimise = minimise;
+        this.hidden   = hidden;
+
+        // the actual "maximise minimise" window controller
+        this.maximise_button = maximise_button;
+        this.minimise_button = minimise_button;
 
         // resize object => in case you want that window to be resizable in "top down"/"right left" or all
         this.resizable = {
@@ -98,7 +104,7 @@ export class window {
             
             // setup "Window minimize button" ===============
             // if window has minimize ability
-            if(this.minimise){
+            if(this.minimise_button){
 
                 winMinIcon.setAttribute('class', 'icon win_title_button');
                 winMinIcon.src = './graphics/window_min.png';
@@ -121,7 +127,7 @@ export class window {
 
             // setup "Window maximize button" ===============
             // if window has maximize ability
-            if(this.maximise){
+            if(this.maximise_button){
 
                     winMaxIcon.setAttribute('class', 'icon win_title_button');
                     winMaxIcon.src = './graphics/window_max.png';
@@ -132,8 +138,24 @@ export class window {
                     winMaxIcon.addEventListener('click', () => {
                         
                         // toggling between maximize & minimize;
-                        ( this.maximise ) ? this.minimiseWindow() : this.maximizeWindow();
-                        console.log(this.maximise);
+                        if( !this.maximise ){
+
+                            this.maximizeWindow();
+                            this.maximise = true; 
+                            this.minimise = false; 
+
+                        }
+                        else{
+
+                            this.minimiseWindow();
+                            this.minimise = true; 
+                            this.maximise = false; 
+
+                        }
+
+                        console.log("max " , this.maximise);
+                        console.log("min " , this.minimise);
+                        console.log("=======================");
 
                     });
                     
@@ -174,7 +196,6 @@ export class window {
                 // push window to the body
                 document.body.appendChild(window);
 
-
                 winIcons.setAttribute('class', 'win_action_icons');
                 winTitleBar.appendChild(winIcons);
 
@@ -203,16 +224,37 @@ export class window {
 
         // function make window visible if possible
         this.show = () => {
-            /*
-                this function 
-                    not stable 
-                    not completed
-                    
-            */
-            let generate_output = this.generate();
+           
+            // generte window using function generat
+            // and getting result of that operation
+            let output = this.generate();
 
-            if(generate_output){
-                (this.maximise) ? this.maximizeWindow() : this.minimiseWindow();
+            // in case response from "output" true
+            if(output){
+
+                // window maximize or minimze depend on 
+                if( this.maximise ){
+
+                    this.maximizeWindow();
+                    this.maximise = true; 
+                    this.minimise = false; 
+
+                }
+                else{
+
+                    this.minimiseWindow();
+                    this.minimise = true; 
+                    this.maximise = false; 
+                    
+                }
+
+                console.log("max " , this.maximise);
+                console.log("min " , this.minimise);
+
+            }
+            // in case error happend in during generate
+            else {
+                console.exception("cannot make window visible , possible error happened during generate window");
             }
         }
         
@@ -220,7 +262,7 @@ export class window {
         this.maximizeWindow = () => {  
 
             // if dom of this window is available
-            if(this.dom != null && this.dom != undefined){
+            if(this.dom != null && this.dom != undefined) {
 
                 this.dom.style.cssText = `
                         height : calc(100% - 6vh);
@@ -229,15 +271,12 @@ export class window {
                         left : 0px;
                         transition : .3s ease;
                         border-radius : 0px;
-                        cursor : default;
                 `;
-
-                // switch window maximize to "active"
-                this.maximise = true;
+  
             } 
-            // else mean something happed or window not available ==> error message explian 
+            // else mean something happed or window not available currently
             else{ 
-                console.exception(`cannot maximize window does not exist`);
+                console.warn(`cannot maximize window currently !`);
             }
 
         }
@@ -249,7 +288,7 @@ export class window {
             if(this.dom != null && this.dom != undefined){
 
                 this.dom.style.cssText = `
-                height : ${this.height};
+                height : ${this.height}px;
                 width : ${this.width}px;
                 top : ${this.y}px;
                 left : ${this.x}px;
@@ -257,13 +296,10 @@ export class window {
                 transition : .3s ease;
                 `;
 
-                
-                // switch window minimize to "active"
-                this.minimise = true;
             }
-            // else mean something happed or window not available ==> error message explian 
+            // else mean something happed or window not available ==> error message explian currently
             else{ 
-                console.exception(`cannot minimize window does not exist`);
+                console.warn(`cannot minimize window currently !`);
             }
         }
 
