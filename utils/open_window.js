@@ -1,4 +1,5 @@
 // Generate random ID
+
 function generateId(length){
     let result = '';
     let characters = '0123456789';
@@ -95,6 +96,7 @@ function spawnWindow(winId = randomWinId, iconId = randomIconId){
     winBody.setAttribute('class', 'full_container');
     spawnTaskbarIcon(winId, iconId);
 }
+
 
 // Create Taskbar icon foreach open window
 function spawnTaskbarIcon(winId = randomWinId, iconId = randomIconId){

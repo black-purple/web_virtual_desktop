@@ -7,13 +7,14 @@
     --win_title_bar_margin_btwn_elts : 1vh;
     --window_resize : 1vh;
 }
+
 .windowWrapper{
     position: absolute;
-    background-color: #0055e5;
     border-radius: 0.8vh  0.8vh  0vh 0vh;
     box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
     overflow: hidden;
 }
+
 .windowWrapper .win_title_bar{
     cursor: move;
     user-select: none;
@@ -74,7 +75,7 @@
     left: var(--window_resize) ;
     top : var(--window_resize) ;
     overflow: auto;
-    background : white;
+    background-color : white;
 }
 .full_container{
     position: relative;
