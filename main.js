@@ -4,9 +4,9 @@
 import {window} from "./window.js"
 
 
-let window1 = new window("win1",20,20,400,400 , "title_test");
+let window1 = new window("win1","folder 1","black",20,20,400,400);
 
-let window2 = new window("win3",80,100,320,400,"twind",false,true,true);
+let window2 = new window("win3","TTL_WIND1","blue",140,150,320,400,true,true,true);
 
-window1.show();
 window2.show();
+window1.show();
