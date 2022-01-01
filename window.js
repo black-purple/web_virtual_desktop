@@ -1,5 +1,7 @@
 // window class , general class you can import it and using it in another places  
 
+// useful for z-index in css  
+let wins_index = 0;
 
 export class window {
 
@@ -9,6 +11,7 @@ export class window {
         title = "window", focus = true , maximise_button = true , minimise_button = true , 
         maximise = false , minimise = true, hidden = false
     ){
+        // set window data
         this.id = id;
         this.icon_id = "window_icon_" + this.id;
         this.x = x;
@@ -40,8 +43,8 @@ export class window {
         // defualt css variable for all window elements
         this.css  = {
             window : {
-                bg_color_foucs   : "rgb(0, 85, 229)",
-                bg_color_nofoucs : "rgb(122, 153, 227)",
+                foucs_color   : "rgb(0,85,229)",
+                unfoucs_color : "rgb(122,153, 227)",
                 raduis : "0.8vh 0.8vh 0vh 0vh"
             }
             
@@ -53,32 +56,34 @@ export class window {
             
             // in case any element is already with that window id 
             let isAlreadyExist = document.querySelector(`#${this.id}`);
-
+            
         if(isAlreadyExist == null || isAlreadyExist == undefined){
             // Creating window components
-            let window = document.createElement("div");
-            let winTitle = document.createElement("span");
-            let winTitleBar = document.createElement("div");
+            let window       = document.createElement("div");
+            let winTitle     = document.createElement("span");
+            let winTitleBar  = document.createElement("div");
             let winTitleIcon = document.createElement("img");
-            let winIcons = document.createElement("span");
+            let winIcons     = document.createElement("span");
             let winCloseIcon = document.createElement("img");
-            let winMinIcon = document.createElement("img");
-            let winMaxIcon = document.createElement("img");
-            let winBody = document.createElement("div");
+            let winMinIcon   = document.createElement("img");
+            let winMaxIcon   = document.createElement("img");
+            let winBody      = document.createElement("div");
+
+            // set Attributes
+            window.setAttribute('class', 'windowWrapper');
+            window.setAttribute('id', this.id);
 
             // setup "window" ==============================
             // set CSS
-            window.style.cssText = `
+            window.style.cssText += `
                 position : 'absolute';
                 height : ${this.height}px;
                 width  : ${this.width }px;
                 top  : ${this.x}px;
                 left : ${this.y}px;
                 transition : '1s ease-in';
+                background-color : ${ (this.focus) ? this.css.window.foucs_color : this.css.window.unfoucs_color };
             `
-            // set Attributes
-            window.setAttribute('class', 'windowWrapper');
-            window.setAttribute('id', this.id);
             // ==============================================
 
 
@@ -99,6 +104,7 @@ export class window {
             winTitle.setAttribute('class', 'title');
             // set window title
             winTitle.textContent = this.title;
+
             // ==============================================
 
             
@@ -202,12 +208,12 @@ export class window {
                 // Window body
                 window.appendChild(winBody);
                 winBody.setAttribute('class', 'full_container');
-                spawnTaskbarIcon(this.id, this.icon_id);
 
                 /*
                     as last step we storing essential window elements in "dom" object 
                     for future usage
                 */ 
+               
                 this.dom = document.querySelector(`#${this.id}`);
 
                 // confirmation => success operation
@@ -248,8 +254,6 @@ export class window {
                     
                 }
 
-                console.log("max " , this.maximise);
-                console.log("min " , this.minimise);
 
             }
             // in case error happend in during generate
@@ -264,13 +268,14 @@ export class window {
             // if dom of this window is available
             if(this.dom != null && this.dom != undefined) {
 
-                this.dom.style.cssText = `
-                        height : calc(100% - 6vh);
-                        width : 100%;
-                        top : 0px;
-                        left : 0px;
-                        transition : .3s ease;
-                        border-radius : 0px;
+                this.dom.style.cssText += `
+                    height : calc(100% - 6vh);
+                    width : 100%;
+                    top : 0px;
+                    left : 0px;
+                    transition : .3s ease;
+                    border-radius : 0px;
+                    z-index : 9999;
                 `;
   
             } 
@@ -287,13 +292,14 @@ export class window {
             // if dom of this window is available
             if(this.dom != null && this.dom != undefined){
 
-                this.dom.style.cssText = `
-                height : ${this.height}px;
-                width : ${this.width}px;
-                top : ${this.y}px;
-                left : ${this.x}px;
-                border-raduis : 0.8vh 0.8vh 0vh 0vh;
-                transition : .3s ease;
+                this.dom.style.cssText += `
+                    height : ${this.height}px;
+                    width : ${this.width}px;
+                    top : ${this.y}px;
+                    left : ${this.x}px;
+                    border-raduis : 0.8vh 0.8vh 0vh 0vh;
+                    transition : .3s ease;
+                    z-index : ${wins_index};
                 `;
 
             }
