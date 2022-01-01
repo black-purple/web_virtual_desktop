@@ -7,9 +7,10 @@ export class window {
 
     // new window arguments 
     constructor (
-        id = "defWindow" , x = 10, y = 10 , height = 512, width = 512 , 
-        title = "window", focus = true , maximise_button = true , minimise_button = true , 
-        maximise = false , minimise = true, hidden = false
+        id = "defWindow" , title = "window" , window_color = "rgb(0,85,229)", 
+        x = 10, y = 10 , height = 512, width = 512 , 
+        focus = true , maximise_button = true , minimise_button = true , 
+        maximise = false , minimise = true, visible = true
     ){
         // set window data
         this.id = id;
@@ -24,7 +25,7 @@ export class window {
         // in case you want window with "maximise & minimise" buttons
         this.maximise = maximise;
         this.minimise = minimise;
-        this.hidden   = hidden;
+        this.visible  = visible;
 
         // the actual "maximise minimise" window controller
         this.maximise_button = maximise_button;
@@ -43,7 +44,7 @@ export class window {
         // defualt css variable for all window elements
         this.css  = {
             window : {
-                foucs_color   : "rgb(0,85,229)",
+                foucs_color   : window_color,
                 unfoucs_color : "rgb(122,153, 227)",
                 raduis : "0.8vh 0.8vh 0vh 0vh"
             }
@@ -77,12 +78,21 @@ export class window {
             // set CSS
             window.style.cssText += `
                 position : 'absolute';
+
                 height : ${this.height}px;
                 width  : ${this.width }px;
+
                 top  : ${this.x}px;
                 left : ${this.y}px;
+
                 transition : '1s ease-in';
                 background-color : ${ (this.focus) ? this.css.window.foucs_color : this.css.window.unfoucs_color };
+                
+                border-radius: 0.8vh  0.8vh  0vh 0vh;
+                box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
+
+                overflow: hidden;
+                visibility: hidden;
             `
             // ==============================================
 
@@ -233,10 +243,18 @@ export class window {
            
             // generte window using function generat
             // and getting result of that operation
-            let output = this.generate();
+            let output = true;
 
-            // in case response from "output" true
+            // if there's no window dom we try to generate it 
+            if(this.dom == null || this.dom == undefined){
+                output = this.generate();
+            }
+
+            // in case generate success
             if(output){
+
+                this.dom.style.cssText += "visibility: visible;";
+                this.visible = true;
 
                 // window maximize or minimze depend on 
                 if( this.maximise ){
@@ -254,14 +272,37 @@ export class window {
                     
                 }
 
-
             }
-            // in case error happend in during generate
+            // in case not success
             else {
                 console.exception("cannot make window visible , possible error happened during generate window");
             }
         }
         
+        this.hide = () => {
+
+            // generte window using function generat
+            // and getting result of that operation
+            let output = true;
+
+            // if there's no window dom we try to generate it 
+            if(this.dom == null || this.dom == undefined){
+                output = this.generate();
+            }
+
+            // in case generate success
+            if(output){
+
+                this.dom.style.cssText += "visibility: hidden;";
+                this.visible = false;
+
+            }
+            // in case not success
+            else {
+                console.exception("cannot make window hidden , possible error happened during generate window");
+            }
+        }
+
         // this function maximize window
         this.maximizeWindow = () => {  
 
