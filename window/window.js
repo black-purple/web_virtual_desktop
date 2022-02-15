@@ -3,6 +3,7 @@
 // useful for z-index in css  
 let wins_index = 0;
 
+
 export class window {
 
     // new window arguments 
@@ -10,8 +11,16 @@ export class window {
         id = "defWindow" , title = "window" , window_color = "rgb(0,85,229)", 
         x = 10, y = 10 , height = 512, width = 512 , 
         focus = true , maximise_button = true , minimise_button = true , 
-        maximise = false , minimise = true, visible = true
+        maximise = false , minimise = true, visible = true , where = document.body , html
     ){
+        // standards for any window
+        this.struct = {
+            html : html,
+            css  : undefined
+        };
+        // where you want to insert this window by default "BODY"
+        this.where = where;
+
         // set window data
         this.id = id;
         this.icon_id = "window_icon_" + this.id;
@@ -39,7 +48,10 @@ export class window {
 
         this.focus = focus;
 
-        this.dom = null;
+        // where we put all window component
+        this.dom = {
+
+        };
 
         // defualt css variable for all window elements
         this.css  = {
@@ -57,9 +69,13 @@ export class window {
             
             // in case any element is already with that window id 
             let isAlreadyExist = document.querySelector(`#${this.id}`);
+        
+        // window html must be defined first  
+        if(this.struct.html == undefined){
             
-        if(isAlreadyExist == null || isAlreadyExist == undefined){
+            if(isAlreadyExist == null || isAlreadyExist == undefined){
             // Creating window components
+    /*
             let window       = document.createElement("div");
             let winTitle     = document.createElement("span");
             let winTitleBar  = document.createElement("div");
@@ -71,7 +87,7 @@ export class window {
             let winBody      = document.createElement("div");
 
             // set Attributes
-            window.setAttribute('class', 'windowWrapper');
+            window.setAttribute('class', 'window');
             window.setAttribute('id', this.id);
 
             // setup "window" ==============================
@@ -99,12 +115,12 @@ export class window {
 
             // setup "Window title bar" =====================
             // set Attributes
-            winTitleBar.setAttribute('class', 'win_title_bar');
+            winTitleBar.setAttribute('class', 'title_bar');
             winTitleBar.setAttribute('id', 'window_title_bar');
 
             // icon (the top left icon)
             winTitleBar.appendChild(winTitleIcon);
-            winTitleIcon.setAttribute('class', 'icon title_icon');
+            winTitleIcon.setAttribute('class', 'icon');
             winTitleIcon.src = './graphics/folder_open.png';
             winTitleIcon.setAttribute('alt', 'icon');
             winTitleIcon.setAttribute('draggable', 'false');
@@ -122,18 +138,19 @@ export class window {
             // if window has minimize ability
             if(this.minimise_button){
 
-                winMinIcon.setAttribute('class', 'icon win_title_button');
+                winMinIcon.setAttribute('class', 'minimize');
                 winMinIcon.src = './graphics/window_min.png';
                 winMinIcon.setAttribute('alt', 'minimize');
                 winMinIcon.setAttribute('draggable', 'false');
 
                 // add click event when user click on it
                 winMinIcon.addEventListener('click', function(){
+    */
                     /* 
                         minimize function logic need to be here
                     */
                     console.warn("minimise button working !");
-                });
+    /*           });
 
                 // push this element to title bar
                 winTitleBar.appendChild(winMinIcon);
@@ -145,7 +162,7 @@ export class window {
             // if window has maximize ability
             if(this.maximise_button){
 
-                    winMaxIcon.setAttribute('class', 'icon win_title_button');
+                    winMaxIcon.setAttribute('class', 'maximize');
                     winMaxIcon.src = './graphics/window_max.png';
                     winMaxIcon.setAttribute('alt', 'maximize');
                     winMaxIcon.setAttribute('draggable', 'false');
@@ -183,7 +200,7 @@ export class window {
 
                 // setup "Window close button" ===============
                 // setup close button
-                    winCloseIcon.setAttribute('class', 'icon win_title_button');
+                    winCloseIcon.setAttribute('class', 'close');
                     winCloseIcon.src = './graphics/window_close.png';
                     winCloseIcon.setAttribute('alt', 'close');
                     winCloseIcon.setAttribute('draggable', 'false');
@@ -193,6 +210,7 @@ export class window {
                         /* 
                             close function logic need to be here
                         */
+    /*
                         console.warn("close button working ! ");
                     });
 
@@ -217,13 +235,13 @@ export class window {
 
                 // Window body
                 window.appendChild(winBody);
-                winBody.setAttribute('class', 'full_container');
+                winBody.setAttribute('class', 'container');
 
                 /*
                     as last step we storing essential window elements in "dom" object 
                     for future usage
                 */ 
-               
+    /*          
                 this.dom = document.querySelector(`#${this.id}`);
 
                 // confirmation => success operation
@@ -236,6 +254,31 @@ export class window {
                 // confirmation => unsuccess operation
                 return false;
             }
+    */
+                this.dom.title_bar  = this.struct.html.querySelector(".title_bar");
+                this.dom.icon       = this.struct.html.querySelector(".icon");
+                this.dom.title      = this.struct.html.querySelector(".title");
+
+                this.dom.minimise   = this.struct.html.querySelector(".minimize");
+                this.dom.maximise   = this.struct.html.querySelector(".maximise");
+                this.dom.close      = this.struct.html.querySelector(".close");
+
+                this.dom.container  = this.struct.html.querySelector(".container");
+
+                this.dom.resize_left= this.struct.html.querySelector(".resize_left");
+   
+                // insert window 
+                this.struct.html.setAttribute("id" , this.id);
+                let 
+                this.where.appendChild(this.struct.html);
+
+            }
+
+        }
+        else{
+            console.exception("missing window html or css , make sure to define virtualOS object \nand set window html and css to it");
+        }
+
         }
 
         // function make window visible if possible
@@ -350,6 +393,8 @@ export class window {
             }
         }
 
-        } // end of constructor
+    } // end of constructor
 
 } // end of class
+
+
