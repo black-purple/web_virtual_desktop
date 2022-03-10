@@ -5,7 +5,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Styling  -->
-   <!-- <link rel="stylesheet" href="./css/os.css"> -->
+   <link rel="stylesheet" href="./css/os.css">
    <!-- <link rel="stylesheet" href="./css/window.css"> -->
   
    <title>Windows XP - WEB</title>
@@ -15,7 +15,7 @@
 <body>
     <div id="taskbar">
       <!-- start button-->
-      <div id="start_button" onclick="showStartMenu()">
+      <div id="start_button" >
           <img src="./graphics/window_logo.png" alt="menu">
           <p>start</p>
       </div>
@@ -24,11 +24,11 @@
           <div id="time">00:23:54 AM</div>
           <div id="date">12/12/2021</div>
         </div>
-        <span id="expdgBtn"> <i class="bi bi-caret-left-fill" id="left_arrow" onclick="expandArea()"></i> <i class="bi bi-caret-right-fill" id="right_arrow" onclick="reduceArea()"></i> </span>
+        <span id="expdgBtn"> <i class="bi bi-caret-left-fill" id="left_arrow" ></i> <i class="bi bi-caret-right-fill" id="right_arrow" ></i> </span>
     </div>
 
     <!-- open window using desktop icon -->
-    <div class="desktop_icon" onclick="spawnWindow(), spawnTaskbarIcon()">
+    <div class="desktop_icon">
       <table>
         <tr><td><img src="./graphics/folder_close.png" alt="folder" draggable="false" class="desktop_icon_image" ></td></tr>
         <tr><td><p class="desktop_icon_name">Folder</p></td></tr>
