@@ -218,8 +218,8 @@ const vos = new virtualOS();
 
 let fwin = vos.add.window("f_win","test window",20,80,400,400,true,true,true,true);
 
-console.log( fwin )
-console.log( vos.running.windows.f_win );
+console.log( fwin.get.x() , fwin.get.y() );
+console.log( vos.running.windows.f_win.get.x() , vos.running.windows.f_win.get.y() );
 /*
 let window1 = vos.add.window("win1","Explorer","black",20,20,400,400);
 let window2 = vos.add.window("win3","TTL_WIND1","blue",140,150,320,400,true,true,true);
