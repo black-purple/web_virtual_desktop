@@ -1,7 +1,7 @@
 
 // main.js just a simple file for testing classes function & ....
 
-import {virtualOS} from "../virtualOS/virtualOS - dev/vritualOS.js";
+import { desktop } from "../DesktopJS/Desktop - dev/Desktop.js";
 
 const windowHTML = `
     <div class=window>
@@ -30,8 +30,7 @@ const windowHTML = `
     <div class="resize resize_corner" id="resize_dr"> </div>
 
 </div>
-`
-;
+`;
 const windowHTML2 = `
     <div class=window>
     <div class="top_bar">
@@ -59,8 +58,7 @@ const windowHTML2 = `
     <div class="resize resize_corner" id="resize_dr"> </div>
 
 </div>
-`
-;
+`;
 
 const windowCSS = ` 
 
@@ -212,7 +210,7 @@ const windowCSS = `
 }
 `;
 
-const vos = new virtualOS();
+const vos = new desktop();
       vos.set.window.html(windowHTML);
       vos.set.window.css(windowCSS);
 
