@@ -3,7 +3,7 @@
 ### this project for building virtual desktop environment on web ( ```HTML``` - ```CSS``` - ```JS``` ).
 
 ### Note : 
-- you need **Desktop.js** library , this project constructed using it .
+- you need **[Desktop.js](https://github.com/Mouradouchane/DesktopJS)** library , this project constructed using it .
 ```js
     import {desktop} from "...path/desktop.js";
 ```
