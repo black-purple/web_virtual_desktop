@@ -210,14 +210,17 @@ const windowCSS = `
 }
 `;
 
-const vos = new desktop();
-      vos.set.window.html(windowHTML);
-      vos.set.window.css(windowCSS);
+const dtp = new desktop();
+      dtp.set.window.html(windowHTML);
+      dtp.set.window.css(windowCSS);
 
-let fwin = vos.add.window("f_win","test window",20,80,400,400,true,true,true,true);
+let fwin = dtp.new.window("f_win","test window",20,80,400,400,true,true,true,true);
 
-console.log( fwin.get.x() , fwin.get.y() );
-console.log( vos.running.windows.f_win.get.x() , vos.running.windows.f_win.get.y() );
+let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true,true)
+
+console.log( fwin.get.x() ,  fwin.get.y() , fwin.title , fwin.get.id() );
+console.log( xwin.get.x() ,  xwin.get.y() , xwin.title , xwin.get.id() );
+
 /*
 let window1 = vos.add.window("win1","Explorer","black",20,20,400,400);
 let window2 = vos.add.window("win3","TTL_WIND1","blue",140,150,320,400,true,true,true);
