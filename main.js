@@ -1,7 +1,7 @@
 
 // main.js just a simple file for testing classes function & ....
 
-import { desktop } from "../DesktopJS/Desktop - dev/Desktop.js";
+import { desktop } from "../DesktopJS/Desktop - dev/desktop.js";
 
 const windowHTML = `
     <div class=window>
@@ -10,9 +10,9 @@ const windowHTML = `
         <p class="title"> test window </p>
 
         <div class="buttons"> 
-            <div class="tb_button" id="minimize"></div>
-            <div class="tb_button" id="maximize"></div>
-            <div class="tb_button" id="close"></div>
+            <div class="tb_button minimize" id="minimize"></div>
+            <div class="tb_button maximize" id="maximize"></div>
+            <div class="tb_button close"    id="close"></div>
         </div>
     </div>
     
@@ -210,16 +210,21 @@ const windowCSS = `
 }
 `;
 
-const dtp = new desktop();
+const dtp = new desktop("desk");
       dtp.set.window.html(windowHTML);
       dtp.set.window.css(windowCSS);
 
-let fwin = dtp.new.window("f_win","test window",20,80,400,400,true,true,true,true);
+let fwin = dtp.new.window("f_win","explorer",20,80,400,400,true,true,true,true);
 
-let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true,true)
+let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
 
-console.log( fwin.get.x() ,  fwin.get.y() , fwin.title , fwin.get.id() );
-console.log( xwin.get.x() ,  xwin.get.y() , xwin.title , xwin.get.id() );
+console.log( fwin.get.x() , fwin.get.y() , fwin.get.title() , fwin.get.id() );
+
+setTimeout(() => {
+    xwin.set.title("new title");
+    console.log( xwin.get.x() , xwin.get.y() , xwin.get.title() , xwin.get.id() );
+},4000);
+
 
 /*
 let window1 = vos.add.window("win1","Explorer","black",20,20,400,400);
