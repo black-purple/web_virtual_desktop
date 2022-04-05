@@ -220,11 +220,6 @@ let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
 
 console.log( fwin.get.x() , fwin.get.y() , fwin.get.title() , fwin.get.id() );
 
-setTimeout(() => {
-    xwin.set.title("new title");
-    console.log( xwin.get.x() , xwin.get.y() , xwin.get.title() , xwin.get.id() );
-},4000);
-
 
 /*
 let window1 = vos.add.window("win1","Explorer","black",20,20,400,400);
