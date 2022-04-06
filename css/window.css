@@ -13,11 +13,12 @@
     border-radius: 0.8vh  0.8vh  0vh 0vh;
     box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
     overflow: hidden;
-    background: #01163b;
+    background: #0055e5;
     height : 200px;
     width : 50%;
     top: 10px;
     left : 100px;
+
 }
 
 .window .top_bar {
@@ -35,7 +36,9 @@
 .window .top_bar .icon{
     position :relative;
     height : 60%;
-    margin: 5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     display: inline-block;
 }
 
@@ -87,7 +90,7 @@
     height: calc(100% -  ( 5vh ));
     left: 1vh;
     overflow: auto;
-    background-color : rgb(65, 64, 64);
+    background-color : rgb(255, 255, 255);
 }
 
 
