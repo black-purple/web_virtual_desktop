@@ -32,21 +32,29 @@ const windowHTML = `
 </div>
 `;
 
+const desk = new desktop("desk");
+      desk.set.window.html(windowHTML);
 
-const dtp = new desktop("desk");
-      dtp.set.window.html(windowHTML);
+let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false);
 
-let fwin = dtp.new.window("f_win","explorer",20,80,400,400,true,true,true,true);
-
-let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
-let xwi = dtp.new.window("browser","browser",200,100,200,300,true,true,true,true,false);
+//let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
+let xwi  = desk.new.window("browser","browser",200,100,200,300,true,true,true);
 
 
-xwi.on.drag( function(win , e){
-    console.log( win.get.id() , e);
-} );
 
-console.log( xwi.get.resize_h() , xwi.get.resize_w() );
+xwi.on.drag_start( function(win , e ){
+    console.log( "drag start" , win.get.id() );
+});
+
+xwi.on.drag( (win ) => {
+    console.warn( "drag in"   , win.get.id() );
+});
+
+xwi.on.drag_end( ( win , e ) => {
+    console.log( "drag end"   , win.get.id() );
+});
+
+
 
 /*
 // example : same window function like open close hide ....
