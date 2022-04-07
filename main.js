@@ -46,7 +46,7 @@ xwi.on.drag( function(win , e){
     console.log( win.get.id() , e);
 } );
 
-console.log( xwi.get.resize_h() )
+console.log( xwi.get.resize_h() , xwi.get.resize_w() );
 
 /*
 // example : same window function like open close hide ....
