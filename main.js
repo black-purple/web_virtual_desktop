@@ -39,34 +39,16 @@ const dtp = new desktop("desk");
 let fwin = dtp.new.window("f_win","explorer",20,80,400,400,true,true,true,true);
 
 let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
-let xwi = dtp.new.window("browser","browser",200,100,200,300,true,true,true);
+let xwi = dtp.new.window("browser","browser",200,100,200,300,true,true,true,true,false);
 
 
 xwi.on.drag( function(win , e){
     console.log( win.get.id() , e);
 } );
 
+console.log( xwi.get.resize_h() )
 
 /*
-let window1 = vos.add.window("win1","Explorer","black",20,20,400,400);
-let window2 = vos.add.window("win3","TTL_WIND1","blue",140,150,320,400,true,true,true);
-
-    scenario
-
-// virtual os main object "MASTER"
-const vos = new virtualOS();
-    // GET/SET object's in OS For Controll Elements
-    vos.set.window.html( html_str );
-    vos.set.window.css( css_str );
-
-    vos.get.window.html( );
-    vos.get.window.css( );
-
-    // Window Example in ADD object
-let win1 = vos.add.window(
-    id,title,x,y,width,height,foucs,draggable,resizable_H,resizable_W,minimize,maximize
-);
-
 // example : same window function like open close hide ....
 win1.open( call_back_function ); 
 win1.show( call_back_function );
