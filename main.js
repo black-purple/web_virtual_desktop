@@ -40,21 +40,12 @@ let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).op
 //let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
 let xwin  = desk.new.window("browser","browser",200,100,200,300,true,true,true).open();
 
-xwin.on.drag_end( ( win ) => {
-
-    console.log( win.is.foucs() );
-
-})
-
-setTimeout(( ) => {
-    console.log( xwin.is.foucs()  ,  xwin.get.z_index() );
-} , 5000);
+console.log( xwin );
+console.log( desk.running.windows["browser"] );
 
 /*
 // example : same window function like open close hide ....
 win1.open( call_back_function ); 
-win1.show( call_back_function );
-win1.hide( call_back_function );
 win1.close( call_back_function );
 win1.delete( call_back_function );
 
