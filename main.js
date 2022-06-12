@@ -38,15 +38,17 @@ const desk = new desktop("desk");
 let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).open();
 
 //let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
-let xwi  = desk.new.window("browser","browser",200,100,200,300,true,true,true).open();
+let xwin  = desk.new.window("browser","browser",200,100,200,300,true,true,true).open();
 
-xwi.set.properties( {
-    
-    id : "rtx222",
-    serial : "GKZEP-PZEZ",
-    access : true
-} );
+xwin.on.drag_end( ( win ) => {
 
+    console.log( win.is.foucs() );
+
+})
+
+setTimeout(( ) => {
+    console.log( xwin.is.foucs()  ,  xwin.get.z_index() );
+} , 5000);
 
 /*
 // example : same window function like open close hide ....
