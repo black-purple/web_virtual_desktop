@@ -35,37 +35,27 @@ const windowHTML = `
 const desk = new desktop("desk");
       desk.set.window.html(windowHTML);
 
-let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false);
+let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).open();
 
 //let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
-let xwi  = desk.new.window("browser","browser",200,100,200,300,true,true,true).open(
-    function( win ){ 
-        console.log( win.get.id() );
-    } 
-, 11);
+let xwin  = desk.new.window("browser","browser",200,100,200,300,true,true,true,true,true,true).open();
 
+xwin.on.maximize( function(win , ev , p1) {
 
-console.log("open", xwi.is.open() );
-console.log("close", xwi.is.close() );
+    console.warn("maximize : " , p1);
 
-xwi.on.drag_start( function( win , e ){
-    console.log( "drag start" , win.get.id() );
-});
+} , "param1" );
 
-xwi.on.drag( ( win ) => {
-    console.warn( "drag in"   , win.get.id() );
-});
+xwin.on.minimize( function(win , ev , p2) {
 
-xwi.on.drag_end( ( win , e ) => {
-    console.log( "drag end"   , win.get.id() );
-});
+    console.warn("minimize : " , p2);
+
+} , "param2" );
 
 
 /*
 // example : same window function like open close hide ....
 win1.open( call_back_function ); 
-win1.show( call_back_function );
-win1.hide( call_back_function );
 win1.close( call_back_function );
 win1.delete( call_back_function );
 
