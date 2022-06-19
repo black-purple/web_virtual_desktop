@@ -38,13 +38,21 @@ const desk = new desktop("desk");
 let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).open();
 
 //let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
-let xwin  = desk.new.window("browser","browser",200,100,200,300,true,true,true).open();
+let xwin  = desk.new.window("browser","browser",200,100,200,300,true,true,true,true,true,true).open();
 
-xwin.on.foucs( function(win , ev , p1, p2 ) {
+xwin.on.maximize( function(win , ev , p1) {
 
-    console.warn("foucs : " , win.get.title() , ev , p1 , p2);
+    console.warn("maximize : " , p1);
 
-} , "param1" , "param2");
+} , "param1" );
+
+xwin.on.minimize( function(win , ev , p2) {
+
+    console.warn("minimize : " , p2);
+
+} , "param2" );
+
+
 /*
 // example : same window function like open close hide ....
 win1.open( call_back_function ); 
