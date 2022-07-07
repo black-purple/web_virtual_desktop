@@ -1,5 +1,5 @@
 *{
-    --window_in_foucs_color : #0055e5;
+    --window_in_foucs_color : rgba(27, 27, 27, 1);
     --window_out_focus_color : rgb(122, 153, 227);
     --window_radius : 0.8vh  0.8vh  0vh 0vh;
     --win_deflt_font_size : 2.5vh;
@@ -10,15 +10,14 @@
 
 .window {
     position: absolute;
-    border-radius: 0.8vh  0.8vh  0vh 0vh;
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
+    /* border-radius: 0.8vh  0.8vh  0vh 0vh; */
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.363);
     overflow: hidden;
-    background: #0055e5;
+    background: var(--window_in_foucs_color);
     height : 200px;
     width : 50%;
     top: 10px;
     left : 100px;
-
 }
 
 .window .top_bar {
@@ -28,7 +27,7 @@
     width: 100%;
     height: 4vh;
     overflow: hidden;
-    background-color: #0055e5;
+    background-color: var(--window_in_foucs_color);
     display: grid;
     grid-template-columns: 10% 66% 24%;
 }
@@ -55,11 +54,6 @@
     /* text-align: center; */
 }
 
-.window .top_bar .buttons{
-    display : grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
 .window .top_bar .tb_button{
     position: relative;
     display: inline-block;
@@ -68,7 +62,7 @@
     width: 3vh;
     cursor: pointer;
     background-size: cover;
-    
+    background-color: rgb(255, 255, 255);
 }
 
 
@@ -87,12 +81,11 @@
 .window .container {
     position: relative;
     width: calc(100% - 1vh * 2);
-    height: calc(100% -  ( 5vh ));
+    height: calc( 100% - ( 5vh ) );
     left: 1vh;
     overflow: auto;
-    background-color : rgb(255, 255, 255);
+    background-color : rgba(255, 255, 255, 1);
 }
-
 
 .window .resize_horizontal{
     position: absolute;
@@ -142,12 +135,12 @@
     left:calc(100% - 1vh);
     cursor:sw-resize;
 }
-.window #resize_dl{
+.window #resize_bl{
     top:calc(100% - 1vh);
     left:0vh;
     cursor:sw-resize;
 }
-.window #resize_dr{
+.window #resize_br{
     top: calc(100% - 1vh);
     left:calc(100% - 1vh);
     cursor:se-resize;

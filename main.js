@@ -2,39 +2,16 @@
 // main.js just a simple file for testing classes function & ....
 
 import { desktop } from "../DesktopJS/Desktop-dev/desktop.js";
+import { window_maker } from "../DesktopJS/Desktop-dev/window/window_maker.js";
 
-const windowHTML = `
-    <div class=window>
-    <div class="top_bar">
-        <img class="icon" src="./graphics/folder_open.png">
-        <p class="title"> test window </p>
-
-        <div class="buttons"> 
-            <div class="tb_button minimize" id="minimize"></div>
-            <div class="tb_button maximize" id="maximize"></div>
-            <div class="tb_button close"    id="close"></div>
-        </div>
-    </div>
-    
-    <div class="container"> </div>
-
-    <div class="resize resize_horizontal" id="resize_top"> </div>
-    <div class="resize resize_horizontal" id="resize_down"> </div>
-
-    <div class="resize resize_vertical" id="resize_left"> </div>
-    <div class="resize resize_vertical" id="resize_right"> </div>
-
-    <div class="resize resize_corner" id="resize_tl"> </div>
-    <div class="resize resize_corner" id="resize_tr"> </div>
-    <div class="resize resize_corner" id="resize_dl"> </div>
-    <div class="resize resize_corner" id="resize_dr"> </div>
-
-</div>
-`;
+const windowHTML = "";
 
 const desk = new desktop("desk");
       desk.set.window.html(windowHTML);
 
+
+let win = new window_maker();    
+/*
 let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).open();
 
 //let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
@@ -53,7 +30,6 @@ xwin.on.minimize( function(win , ev , p2) {
 } , "param2" );
 
 
-/*
 // example : same window function like open close hide ....
 win1.open( call_back_function ); 
 win1.close( call_back_function );
