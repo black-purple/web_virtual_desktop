@@ -1,34 +1,40 @@
 *{
-    --window_in_foucs_color : #0055e5;
+    --window_in_foucs_color : rgba(27, 27, 27, 1);
     --window_out_focus_color : rgb(122, 153, 227);
     --window_radius : 0.8vh  0.8vh  0vh 0vh;
     --win_deflt_font_size : 2.5vh;
     --window_title_bar_height : 5vh;
     --win_title_bar_margin_btwn_elts : 1vh;
     --window_resize : 1vh;
+
+    /* testing colors */
+    --window_test_color : rgba(116, 31, 252, 0.8);
+    --container_color : rgba(24, 24, 24, 0.8);
 }
 
 .window {
     position: absolute;
+    /* 
     border-radius: 0.8vh  0.8vh  0vh 0vh;
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
+    background: var(--window_in_foucs_color);
+     */
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.363);
     overflow: hidden;
-    background: #0055e5;
     height : 200px;
     width : 50%;
     top: 10px;
     left : 100px;
-
 }
 
 .window .top_bar {
     position :relative;
     cursor: move;
     user-select: none;
-    width: 100%;
+    left : var(--window_resize);
+    width: calc(100% - var(--window_resize) * 2) ;
     height: 4vh;
     overflow: hidden;
-    background-color: #0055e5;
+    background-color: var(--window_test_color );
     display: grid;
     grid-template-columns: 10% 66% 24%;
 }
@@ -55,44 +61,46 @@
     /* text-align: center; */
 }
 
-.window .top_bar .buttons{
-    display : grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.window .top_bar .buttons {
+    position:  absolute;
+    width: calc( 3vh * 3 + 3vh);
+    height : 3vh;
+    top : 0.5vh;
+    right : 0vh;
 }
 
 .window .top_bar .tb_button{
     position: relative;
     display: inline-block;
-    margin-top: 0.5vh;
     height: 3vh;
+    margin-left: 0.5vh;
     width: 3vh;
     cursor: pointer;
     background-size: cover;
-    
+    background-color: rgb(255, 255, 255);
 }
 
 
-.window .top_bar #minimize{
+.window .top_bar .hide{
     background-image : url("../graphics/window_min.png");
 }
 
-.window .top_bar #maximize{
+.window .top_bar .maximize{
     background-image : url("../graphics/window_max.png");
 }
 
-.window .top_bar #close{
+.window .top_bar .close{
     background-image : url("../graphics/window_close.png");
 }
 
 .window .container {
     position: relative;
     width: calc(100% - 1vh * 2);
-    height: calc(100% -  ( 5vh ));
+    height: calc( 100% - ( 5vh ) );
     left: 1vh;
     overflow: auto;
-    background-color : rgb(255, 255, 255);
+    background-color : var( --container_color );
 }
-
 
 .window .resize_horizontal{
     position: absolute;
@@ -102,12 +110,14 @@
     cursor: s-resize;
 }
 
-.window #resize_top{
+.window .resize_top{
     top : 0%;
+    background-color: transparent;
 }
 
-.window #resize_down{
+.window .resize_down{
     top : calc(100%  - 1vh);
+    background-color: var(--window_test_color );
 }
 
 .window .resize_vertical{
@@ -116,13 +126,14 @@
     top: 1vh;
     height: calc(100% - 2vh);
     cursor: e-resize;
+    background-color: var(--window_test_color );
 }
 
-.window #resize_left{
+.window .resize_left{
     left: 0%;
 }
 
-.window #resize_right{
+.window .resize_right{
     left : calc(100%  - 1vh);
 }
 
@@ -130,24 +141,25 @@
     position : absolute;
     width: 1vh;
     height: 1vh;
+    background-color: var(--window_test_color);
 }
 
-.window #resize_tl{
+.window .resize_tl{
     top :0vh;
     left:0vh;
     cursor:se-resize;
 }
-.window #resize_tr{
+.window .resize_tr{
     top :0vh;
     left:calc(100% - 1vh);
     cursor:sw-resize;
 }
-.window #resize_dl{
+.window .resize_bl{
     top:calc(100% - 1vh);
     left:0vh;
     cursor:sw-resize;
 }
-.window #resize_dr{
+.window .resize_br{
     top: calc(100% - 1vh);
     left:calc(100% - 1vh);
     cursor:se-resize;
