@@ -2,6 +2,7 @@
     --window_in_foucs_color : rgba(27, 27, 27, 1);
     --window_out_focus_color : rgb(122, 153, 227);
     --window_radius : 0.8vh  0.8vh  0vh 0vh;
+    --window_shadow : 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
     --win_deflt_font_size : 2.5vh;
     --window_title_bar_height : 5vh;
     --win_title_bar_margin_btwn_elts : 1vh;
@@ -18,7 +19,7 @@
     border-radius: 0.8vh  0.8vh  0vh 0vh;
     background: var(--window_in_foucs_color);
      */
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.363);
+    box-shadow: var( --window_shadow );
     overflow: hidden;
     height : 200px;
     width : 50%;
@@ -58,6 +59,7 @@
     cursor: default;
     user-select: none;
     margin-top: 0.5vh;
+    width: min-content;
     /* text-align: center; */
 }
 
@@ -75,22 +77,22 @@
     height: 3vh;
     margin-left: 0.5vh;
     width: 3vh;
-    cursor: pointer;
+    cursor:move;
     background-size: cover;
     background-color: rgb(255, 255, 255);
 }
 
 
 .window .top_bar .hide{
-    background-image : url("../graphics/window_min.png");
+    background-color : rgb(255, 224, 50);
 }
 
 .window .top_bar .maximize{
-    background-image : url("../graphics/window_max.png");
+    background-color : rgb(60, 151, 255);
 }
 
 .window .top_bar .close{
-    background-image : url("../graphics/window_close.png");
+    background-color : rgb(255, 53, 53);
 }
 
 .window .container {
@@ -102,7 +104,7 @@
     background-color : var( --container_color );
 }
 
-.window .resize_horizontal{
+.window .resize_vertical{
     position: absolute;
     width: calc(100% - 2vh);
     height: 1vh;
@@ -120,7 +122,7 @@
     background-color: var(--window_test_color );
 }
 
-.window .resize_vertical{
+.window .resize_horizontal{
     position: absolute;
     width: 1vh;
     top: 1vh;

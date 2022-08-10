@@ -4,13 +4,11 @@
 import { desktop } from "../DesktopJS/Desktop-dev/desktop.js";
 import { window_maker } from "../DesktopJS/Desktop-dev/window/window_maker.js";
 
-const windowHTML = "";
-
-const desk = new desktop("desk");
-      desk.set.window.html(windowHTML);
 
 
-let win = new window_maker();    
+const desk = new desktop("desk" , "./graphics/background.jpg");
+
+let win = new window_maker("icc","computer",120,120,600,800,true,true,true,true,"./graphics/folder.png",true,true,true);    
 /*
 let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).open();
 
