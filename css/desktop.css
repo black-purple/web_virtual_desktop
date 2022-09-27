@@ -1,17 +1,19 @@
 .desktop_icon{
     cursor: pointer;
-    margin: 1.2em 1.2em;
+    margin: 1em 1em;
     float: right;
 }
 .desktop_icon table td{
     text-align: center;
 }
 .desktop_icon_image{
-    height: 4.2em;
+    height: 4em;
 }
 .desktop_icon_name{
     color: white;
-    margin-top: .5em;
-    font-size: 1.3em;
-    text-shadow: 2.5px 2.5px 5px rgba(3, 3, 3, 0.842);
+    /* margin-top: .5em; */
+    font-family: tahoma;
+    font-weight: bold;
+    font-size: 1em;
+    text-shadow:var(--window_shadow);
 }

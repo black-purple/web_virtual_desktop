@@ -6,23 +6,22 @@
     user-select: none;
     --global_font :  Microsoft Sans Serif;
 
-    --start_btn_color : #41cb41;
-    --start_btn_color_hover : #4fee4f;
+    --start_btn_color : rgba(253, 253, 253, 0.9);
+    --start_btn_color_hover : rgba(129, 129, 129, 0.9);
 
     --taskbar_size : 6%;
-    --taskbar_color : #2361e1;
-    --time_widget_color : #3d97fd;
+    --taskbar_color : rgba(116, 31, 252, 0.8);
+    --time_widget_color : rgba(56, 4, 139, 0.8);
     --taskbar_app_color_in_blur : #3b84d8;
     --taskbar_app_color_in_foucs : #7380f5;
-    --taskbar_shadow : inset 8px 0px 4px 4px #00000033;
+    --taskbar_shadow : 0px 0px 4px 4px #00000033;
     --taskbar_app_height : 80%;
-    --global_inset_shadow : inset 0px 0px 4px 2px #00000080;
+    --global_inset_shadow : 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
     
 }
 body{
-    background-image: url("../graphics/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    width : 100%;
+    height: 100%;
 }
 /* buttom task bar who contain 'windows_button' current running applications & stuff */
 #taskbar{
@@ -38,13 +37,16 @@ body{
 #start_button{
     position: relative;
     height: 100%;
-    width: 18vh;
-    background-color : var(--start_btn_color);
-    border-radius: 0vh 1vh 2.8vh 0vh;
+    left: 0px;
+    width: max-content;
+    background-color: var(--start_btn_color);
+    /* border-radius: 0vh 1vh 2.8vh 0vh; */
     float: left;
     box-shadow: var(--global_inset_shadow);
-    transition: 0.1s;
+    transition: 0.2s;
+    top: 0px;
 }
+
 #expdgBtn{
     color: white;
     background-color: #3794ff;
@@ -65,13 +67,15 @@ body{
 #expdgBtn:hover{
     background-color: #40a2fd;
 }
+
+
 /* time widget styling */
 #time_widget{
     position: relative;
     height: 100%;
-    width: 15vh;
+    width: max-content;
     background-color : var(--time_widget_color) ;
-    border-radius: 1vh 0vh 0vh 1vh;
+    /* border-radius: 1vh 0vh 0vh 1vh; */
     float: right;
     box-shadow: var(--global_inset_shadow);
     display: flex;
@@ -82,8 +86,11 @@ body{
 }
 #time, #date{
     color: white;
-    font-size: 1.1em;
+    font-family: tahoma;
+    font-size: 0.8em;
     font-weight: bold;
+    margin-right: 10px;
+    margin-left:  10px;
 }
 /* on hover event */
 #start_button:hover{
@@ -100,17 +107,18 @@ body{
 #start_button img{
     position: relative;
     height: 80%;
-    top : 10%;
-    left: 5%;
-    float: left;
+    top: 10%;
+    left: 0%;
+    display: inline-block;
 }
+
 /* text windows menu button */
 #start_button p{
     position: relative;
     height: 80%;
     top : 10%;
-    left: 12%;
-    float: left;
+    left: 0%;
+    display: inline-block;
     color : white;
     font-family: var(--global_font);
     font-weight: bold;

@@ -2,20 +2,29 @@
 // main.js just a simple file for testing classes function & ....
 
 import { desktop } from "../DesktopJS/Desktop-dev/desktop.js";
-import { window_maker } from "../DesktopJS/Desktop-dev/window/window_maker.js";
 
-const windowHTML = "";
+const desk = new desktop("desk" , "./graphics/background.jpg");
 
-const desk = new desktop("desk");
-      desk.set.window.html(windowHTML);
+let win = desk.new.window(
+    "icc","computer",
+    260,100,400,400,
+    true,true,true,false,
+    "./graphics/folder.png",
+    false,false
+).open();
 
 
-let win = new window_maker();    
+let win1 = desk.new.window(
+    "gcc","compiler",
+    120,120,400,400,
+    true,true,true,true,
+    "./graphics/folder.png",
+    false,false
+).open();
+
+
+
 /*
-let fwin = desk.new.window("f_win","explorer",20,80,400,400,true,false,false).open();
-
-//let xwin = dtp.new.window("s_win","ps window",320,110,180,300,true,true,true);
-let xwin  = desk.new.window("browser","browser",200,100,200,300,true,true,true,true,true,true).open();
 
 xwin.on.maximize( function(win , ev , p1) {
 
