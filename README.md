@@ -1,14 +1,9 @@
 <h1> Virtual Desktop Environment </h1>
-<img src="https://img.shields.io/badge/-BETA-cyan">
-<img src="https://img.shields.io/github/issues/black-purple/fake-win-xp">
-<img src="https://img.shields.io/github/forks/black-purple/fake-win-xp">
-<img src="https://img.shields.io/github/stars/black-purple/fake-win-xp">
-<img src="https://img.shields.io/github/license/black-purple/fake-win-xp">
+
+<img src="https://img.shields.io/badge/-BETA-cyan"> <img src="https://img.shields.io/github/issues/black-purple/fake-win-xp">
+ <img src="https://img.shields.io/github/forks/black-purple/fake-win-xp"> <img src="https://img.shields.io/github/stars/black-purple/fake-win-xp"> <img src="https://img.shields.io/github/license/black-purple/fake-win-xp">
 <br>
-<img src="https://img.shields.io/badge/-HTML-white?style=flat&logo=HTML5">
-<img src="https://img.shields.io/badge/-CSS-blue?style=flat&logo=CSS3">
-<img src="https://img.shields.io/badge/-JAVASCRIPT-red?style=flat&logo=JAVASCRIPT">
-<img src="https://img.shields.io/badge/-DesktopJS-white">
+<img src="https://img.shields.io/badge/-HTML-white?style=flat&logo=HTML5"> <img src="https://img.shields.io/badge/-CSS-blue?style=flat&logo=CSS3"> <img src="https://img.shields.io/badge/-JAVASCRIPT-red?style=flat&logo=JAVASCRIPT"> <img src="https://img.shields.io/badge/-DesktopJS-white">
 <h3> 
 - this project for <span style="color:cyan"> building a virtual desktop environment </span> as a <span style="color:cyan"> web-app </span> . <br> 
 - this project also for testing the ability of <a href="https://github.com/Mouradouchane/DesktopJS"> DesktopJS
