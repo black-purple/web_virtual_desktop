@@ -1,21 +1,38 @@
-# Fake Windows XP
+<h1> Virtual Desktop Environment </h1>
+<img src="https://img.shields.io/badge/-BETA-cyan">
+<img src="https://img.shields.io/github/issues/black-purple/fake-win-xp">
+<img src="https://img.shields.io/github/forks/black-purple/fake-win-xp">
+<img src="https://img.shields.io/github/stars/black-purple/fake-win-xp">
+<img src="https://img.shields.io/github/license/black-purple/fake-win-xp">
+<br>
+<img src="https://img.shields.io/badge/-HTML-white?style=flat&logo=HTML5">
+<img src="https://img.shields.io/badge/-CSS-blue?style=flat&logo=CSS3">
+<img src="https://img.shields.io/badge/-JAVASCRIPT-red?style=flat&logo=JAVASCRIPT">
+<img src="https://img.shields.io/badge/-DesktopJS-white">
+<h3> 
+- this project for <span style="color:cyan"> building a virtual desktop environment </span> as a <span style="color:cyan"> web-app </span> . <br> 
+- this project also for testing the ability of <a href="https://github.com/Mouradouchane/DesktopJS"> DesktopJS
+</a> 
+library .
+</h3>
 
-### this project for building virtual desktop environment on web ( ```HTML``` - ```CSS``` - ```JS``` ).
+<br>
+<h1> Note : </h1>
 
-### Note : 
-- you need **[Desktop.js](https://github.com/Mouradouchane/DesktopJS)** library , this project constructed using it .
-```js
-    import {desktop} from "...path/desktop.js";
-```
-- XP theme just for testing , you can build your own theme :smile:
+<h3> 
+- this project need 
+<a href="https://github.com/Mouradouchane/DesktopJS"> DesktopJS </a> to work properly .
+<br>
+- you can <span style="color:cyan">use</span> this project <span style="color:cyan">to build your own</span> desktop environment .
+</h3>
 
-### Preview :
+<br>
+<h1> Preview </h1>
+<img src="./previews/ss1.png">
+<img src="./previews/ss2.png">
 
-![Preview Image 1](./previews/ss1.png)
+<h1> Contributors </h1>
 
-![Preview Image 2](./previews/ss2.png)
+* Mourad Ouchane <a href="https://github.com/Mouradouchane" > ouchane_cc </a> 
 
-## Contributors
-
-* [Mourade Ouchane - a.k.a  ouchane_cc on GitHub -](https://github.com/Mouradouchane)
-* [Abderrahman DAKIR ALLAH - a.k.a  black-purple on GitHub -](https://github.com/black-purple)
+* Abderrahman DAKIR ALLAH <a href="https://github.com/black-purple"> black-purple </a> 
