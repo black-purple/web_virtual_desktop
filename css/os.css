@@ -39,6 +39,7 @@
     height: var(--taskbar_size);
     top: calc(100% - var(--taskbar_size));
     box-shadow: var(--taskbar_shadow);
+    z-index: 999999999999999999;
 }
 
 /* full windows menu button  */

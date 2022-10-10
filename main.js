@@ -8,9 +8,9 @@ const desk = new desktop("desk" , "./graphics/background.jpg");
 let win = desk.new.window(
     "icc","computer",
     260,100,400,400,
-    false,false,true,false,
+    true,true,true,false,
     "./graphics/folder.png",
-    false,false
+    true,true
 ).open();
 
 
@@ -19,7 +19,7 @@ let win1 = desk.new.window(
     120,120,400,400,
     true,true,true,true,
     "./graphics/folder.png",
-    false,false
+    true,false
 ).open();
 
 
