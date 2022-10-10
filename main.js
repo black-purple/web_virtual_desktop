@@ -19,7 +19,7 @@ let win1 = desk.new.window(
     120,120,400,400,
     true,true,true,true,
     "./graphics/folder.png",
-    true,true
+    true,false
 ).open();
 
 

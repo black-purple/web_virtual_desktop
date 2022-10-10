@@ -29,7 +29,7 @@
 
 .window .top_bar {
     position :relative;
-    cursor: move;
+    cursor: default;
     user-select: none;
     left : var(--window_resize);
     width: calc(100% - var(--window_resize) * 2) ;
@@ -126,7 +126,7 @@
     width: calc(100% - 2vh);
     height: 1vh;
     left: 1vh;
-    cursor: s-resize;
+    cursor: default;
 }
 
 .window .resize_top{
@@ -144,7 +144,7 @@
     width: 1vh;
     top: 1vh;
     height: calc(100% - 2vh);
-    cursor: e-resize;
+    cursor: default;
     background-color: var(--window_test_color );
 }
 
@@ -166,22 +166,22 @@
 .window .resize_tl{
     top :0vh;
     left:0vh;
-    cursor:se-resize;
+    cursor:default;
 }
 .window .resize_tr{
     top :0vh;
     left:calc(100% - 1vh);
-    cursor:sw-resize;
+    cursor:default;
 }
 .window .resize_bl{
     top:calc(100% - 1vh);
     left:0vh;
-    cursor:sw-resize;
+    cursor:default;
 }
 .window .resize_br{
     top: calc(100% - 1vh);
     left:calc(100% - 1vh);
-    cursor:se-resize;
+    cursor:default;
 }
 
 .resize{
