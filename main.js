@@ -23,6 +23,36 @@ let win1 = desk.new.window(
 ).open();
 
 
+win.on.resize.all( ( w , ev ) => {
+
+    console.log( "ALLLL" , w.get.title()  , ev.clientX );
+
+});
+
+win.on.resize.top( ( w , ev ) => {
+
+    console.warn( "resize in top event" , w.get.title()  , ev.clientX );
+
+});
+
+win.on.resize.bottom( ( w , ev ) => {
+
+    console.warn( "resize in bottom event" , w.get.title()  , ev.clientX );
+
+});
+
+
+win.on.resize.left( ( w , ev ) => {
+
+    console.warn( "resize in left event" , w.get.title()  , ev.clientX );
+
+});
+
+win.on.resize.right( ( w , ev ) => {
+
+    console.warn( "resize in right event" , w.get.title()  , ev.clientX );
+
+});
 
 /*
 
