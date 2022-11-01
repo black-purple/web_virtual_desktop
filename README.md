@@ -12,7 +12,7 @@ library .
 </h3>
 
 <br>
-<h1> Note : </h1>
+<h1> Note </h1>
 
 <h3> 
 - this project need 
