@@ -2,6 +2,7 @@
 // main.js just a simple file for testing classes function & ....
 
 import { desktop } from "../DesktopJS/Desktop-dev/desktop.js";
+import { element } from "../DesktopJS/Desktop-dev/element.js";
 
 const desk = new desktop("desk" , "./graphics/background.jpg");
 
@@ -30,7 +31,19 @@ win.on.resize.all( ( w , ev ) => {
 });
 
 
+let e = new element("eid","TITLE","simple text",10,10,110,120);
 
+    e.on.click(
+        ( obj , event ) => console.warn("click_down !")
+    );
+
+    e.on.hover( 
+        ( obj , event ) => {
+            
+            console.log("hover !" , obj.get.text() )
+
+        } 
+    );
 
 /*
 
