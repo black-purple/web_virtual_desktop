@@ -26,23 +26,21 @@ let win1 = desk.new.window(
 
 win.on.resize.all( ( w , ev ) => {
 
-    console.log( "ALLLL" , w.get.title()  , ev.clientX );
+    console.log( "resize event :" , w.get.title()  , ev.clientX );
 
 });
 
 
-let e = new element("eid","TITLE","simple text",10,10,110,120);
+let e = new element("e_id","simple text",10,10,110,120);
 
-    e.on.click(
+    e.context_menu(false);
+
+    e.on.click_right(
         ( obj , event ) => console.warn("click_down !")
     );
 
     e.on.hover( 
-        ( obj , event ) => {
-            
-            console.log("hover !" , obj.get.text() )
-
-        } 
+        ( obj , event ) => console.log("hover !" , obj.get.text() )
     );
 
 /*
